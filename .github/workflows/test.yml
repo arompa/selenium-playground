@@ -34,7 +34,7 @@ jobs:
       - run: npm test
         env:
           BROWSER: ${{ matrix.browser }}
-          SELENIUM: selenium
+          HOST: selenium
       - uses: actions/upload-artifact@v3
         if: always()
         with:
