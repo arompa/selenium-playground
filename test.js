@@ -2,9 +2,13 @@ const chrome = require("selenium-webdriver/chrome");
 const { Builder, By, Key, until } = require("selenium-webdriver");
 
 (async function googleSearch() {
+  let browser = process.env.BROWSER;
+  const host = process.env.SELENIUM || '127.0.0.1';
+  const server = `http://${host}:4444`;
+
   let driver = await new Builder()
-    .forBrowser("chrome")
-    .usingServer("http://selenium:4444/wd/hub/")
+    .forBrowser(browser)
+    .usingServer(server)
     .build();
 
   try {
