@@ -13,7 +13,7 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
     .build();
 
   try {
-    await driver.get("https://www.google.com/search?q=w");
+    await driver.get("https://www.google.com/search?q=wikipedia");
     
     let firstResult = await driver.wait(
       until.elementLocated(By.css("h3")),
