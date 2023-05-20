@@ -4,41 +4,41 @@
 name: Test
 
 on:
-	push:
-		branches: [ "main" ]
-	pull_request:
-		branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-	test:
-		name: Test
-		runs-on: ubuntu-latest
+  build:
+    name: Test
+    runs-on: ubuntu-latest
 
-		container:
-			image: node:19
+    container:
+      image: node:19
 
-		strategy:
-			fail-fast: false
-			matrix:
-				browser: ['chrome', 'firefox', 'edge']
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: ['chrome', 'firefox', 'edge']
 
-		services:
-			selenium:
-				image: selenium/standalone-${{ matrix.browser }}
-				options: --shm-size=2gb
+    services:
+      selenium:
+        image: selenium/standalone-${{ matrix.browser }}
+        options: --shm-size=2gb
 
-		steps:
-			- uses: actions/checkout@v3
-			- uses: actions/setup-node@v3
-				with:
-					node-version: '19'
-					cache: 'npm'
-			- run: npm install
-			- run: npm test
-				env:
-					BROWSER: ${{ matrix.browser }}
-			- uses: actions/upload-artifact@v3
-				if: always()
-				with:
-					name: ${{ matrix.browser }}
-					path: screenshots/
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '19'
+          cache: 'npm'
+      - run: npm install
+      - run: npm test
+        env:
+          BROWSER: ${{ matrix.browser }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: ${{ matrix.browser }}
+          path: screenshots/
