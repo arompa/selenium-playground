@@ -9,4 +9,5 @@
 
 ### Docker-compose
 `docker-compose up`
+#### With scaled nodes
 `docker-compose up --scale edge=2 --scale firefox=3 --scale chrome=4`
