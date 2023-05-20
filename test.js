@@ -5,17 +5,10 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
   let driver = await new Builder()
     .forBrowser("chrome")
     .usingServer("http://selenium:4444/wd/hub/")
-//     .setChromeService(
-//       chrome.setDefaultService(
-//         new chrome.ServiceBuilder("./drivers/chromedriver").build()
-//       )
-//     )
     .build();
 
   try {
-    // Navigate to Url
-    await driver.get("https://www.google.com/search?q=automationbro");
-    // Enter text "Automation Bro" and perform keyboard action "Enter"
+    await driver.get("https://www.google.com/search?q=w");
     
     let firstResult = await driver.wait(
       until.elementLocated(By.css("h3")),
