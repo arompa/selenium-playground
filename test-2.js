@@ -4,16 +4,12 @@ const { Builder, By, Key, until, Capabilities } = require("selenium-webdriver");
 async function googleSearch(browser, capabilities) {
   let driver = await new Builder()
     .forBrowser(browser)
-    .usingServer("http://localhost:4444/wd/hub/")
+    .usingServer("http://selenium:4444/wd/hub/")
     .withCapabilities(capabilities)
     .build();
 
   try {
-    // Navigate to Url
-    await driver.get("https://www.google.com/search?q=automationbro");
-    // Enter text "Automation Bro" and perform keyboard action "Enter"
-
-    await driver.sleep(10000);
+    await driver.get("https://www.google.com/search?q=w");
     
     let firstResult = await driver.wait(
       until.elementLocated(By.css("h3")),
